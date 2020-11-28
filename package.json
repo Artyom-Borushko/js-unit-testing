@@ -38,7 +38,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm test-mocha"
+      "pre-push": "npm run test-mocha"
     }
   }
 }
