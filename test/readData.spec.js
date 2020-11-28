@@ -5,31 +5,34 @@ const path = require('path');
 // it is better to use path.resolve
 //const readData = require('../lib/readData');
 const readData = require(path.resolve('lib/readData'));
+const chai =  require('chai');
+const expect = chai.expect;
+const chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
 
 describe('readData', () => {
-
-    it('should read data from from properties file', () => {
-        let data = readData('somefile.properties');
-        expect(data).toBe('data from properties file');
+    it('should read data from properties file', async () => {
+        let data = await readData('test/test-data/test.properties');
+        expect(data.data).to.be.equal('data from properties file');
     });
 
-    it('should read data from from csv file', () => {
-        let data = readData('somefile.csv');
-        expect(data).toBe('data from csv file');
+    it('should read data from csv file', async () => {
+        let data = await readData('test/test-data/test.csv');
+        expect(data[0].join('')).to.be.equal('data from csv file');
     });
 
-    it('should read data from from json file', () => {
+    it('should read data from json file', () => {
         let data = readData('test/test-data/test.json');
-        expect(data.data).toBe('data from json file');
+        expect(data.data).to.be.equal('data from json file');
     });
 
-    it('should read data from from yml file', () => {
-        let data = readData('somefile.yml');
-        expect(data).toBe('data from yml file');
+    it('should read data from yml file', () => {
+        let data = readData('test/test-data/test.yml');
+        expect(data.data).to.be.equal('data from yml file');
     });
 
-    it('should read data from from xlsx file', () => {
-        let data = readData('somefile.xlsx');
-        expect(data).toBe('data from xlsx file');
+    it('should read data from xlsx file', () => {
+        let data = readData('test/test-data/test.xlsx');
+        expect(data).to.be.equal('data from xlsx file');
     });
 });

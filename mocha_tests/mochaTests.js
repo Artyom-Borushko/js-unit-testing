@@ -20,14 +20,14 @@ let myPromise = new Promise((resolve, reject) => {
 });
 
 describe('ReadData', function() {
-    it('should read data from properties file', () => {
-        let data = readData('somefile.properties');
-        expect(data).to.be.equal('data from properties file');
+    it('should read data from properties file', async () => {
+        let data = await readData('test/test-data/test.properties');
+        expect(data.data).to.be.equal('data from properties file');
     });
 
-    it('should read data from csv file', () => {
-        let data = readData('somefile.csv');
-        expect(data).to.be.equal('data from csv file');
+    it('should read data from csv file', async () => {
+        let data = await readData('test/test-data/test.csv');
+        expect(data[0].join('')).to.be.equal('data from csv file');
     });
 
     it('should read data from json file', () => {
@@ -36,12 +36,12 @@ describe('ReadData', function() {
     });
 
     it('should read data from yml file', () => {
-        let data = readData('somefile.yml');
-        expect(data).to.be.equal('data from yml file');
+        let data = readData('test/test-data/test.yml');
+        expect(data.data).to.be.equal('data from yml file');
     });
 
     it('should read data from xlsx file', () => {
-        let data = readData('somefile.xlsx');
+        let data = readData('test/test-data/test.xlsx');
         expect(data).to.be.equal('data from xlsx file');
     });
 });
