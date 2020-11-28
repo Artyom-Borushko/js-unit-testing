@@ -13,8 +13,16 @@ const sources = [
     'lib/**/*.js'
 ];
 
+const sourcesForTestCoverage = [
+    'lib/**/fileDataManager.js'
+];
+
 const testSources = [
     'test/**/*.spec.js'
+];
+
+const coverageSource = [
+    'test/**/readData.spec.js'
 ];
 
 const jasmineOpts = {
@@ -37,7 +45,7 @@ gulp.task('clean', () => del('report/**'));
 
 
 gulp.task('test:coverage:prepare', () => {
-    return gulp.src(sources)
+    return gulp.src(sourcesForTestCoverage)
         .pipe(istanbul({
             includeUntested: true
         }))
@@ -45,7 +53,7 @@ gulp.task('test:coverage:prepare', () => {
 });
 
 gulp.task('test:coverage', ['clean', 'test:coverage:prepare'], () => {
-    return gulp.src(testSources)
+    return gulp.src(coverageSource)
         .pipe(jasmine(jasmineOpts))
         .pipe(istanbul.writeReports({
             dir: './report',
