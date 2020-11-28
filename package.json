@@ -33,6 +33,12 @@
     "eslint": "^2.11.1",
     "node-csv": "^0.1.2",
     "nyc": "^15.1.0",
-    "properties": "^1.2.1"
+    "properties": "^1.2.1",
+    "husky": "^4.3.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm test-mocha"
+    }
   }
 }
