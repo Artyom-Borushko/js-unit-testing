@@ -15,6 +15,7 @@ describe('readData', () => {
         let data = await readData('test/test-data/test.properties');
         expect(data.data).to.be.equal('data from properties file');
     });
+    
 
     it('should read data from csv file', async () => {
         let data = await readData('test/test-data/test.csv');
