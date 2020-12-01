@@ -1,12 +1,13 @@
 'use strict'
 const proxyquire =  require('proxyquire');
+const sinon = require('sinon');
 const path = require('path');
 const chai =  require('chai');
 const expect = chai.expect;
 const chaiAsPromised = require('chai-as-promised');
 const readData = require(path.resolve('lib/readData'));
 chai.use(chaiAsPromised);
-const test = require('../lib/fileDataManager');
+const dataManager = require('../lib/fileDataManager');
 
 describe('Array', function() {
     describe('#indexOf()', function() {
@@ -33,20 +34,32 @@ describe('ReadData', function() {
     });
 
     it('should read data from json file', () => {
-
         // stubbed test
-        // const ymlStub = {};
+
+        const ymlStub = {};
         // let stub = proxyquire('../lib/fileDataManager', { 'js-yaml': ymlStub });
-        // ymlStub.safeLoad = function (file) { return 'Stubbed value from file'};
+        // ymlStub.safeLoad = function (file) { return 'Stubbed value from json file'};
         // let data = stub.loadYmlFile('test/test-data/test.json');
-        // expect(data).to.be.equal('Stubbed value from file');
+        // expect(data).to.be.equal('Stubbed value from json file');
         
-        // // original test
+
+        // original test
+
         let data = readData('test/test-data/test.json');
         expect(data.data).to.be.equal('data from json file');
     });
 
     it('should read data from yml file', () => {
+        // Fake test
+
+        // var fake = sinon.fake.returns('Fake data from yml file');
+        // sinon.replace(dataManager, 'loadYmlFile', fake);
+        // let data = readData('test/test-data/test.yml');
+        // expect(data).to.be.equal('Fake data from yml file');
+
+
+        // original test
+
         let data = readData('test/test-data/test.yml');
         expect(data.data).to.be.equal('data from yml file');
     });
