@@ -36,7 +36,7 @@ describe('ReadData', function() {
     it('should read data from json file', () => {
         // stubbed test
 
-        const ymlStub = {};
+        // const ymlStub = {};
         // let stub = proxyquire('../lib/fileDataManager', { 'js-yaml': ymlStub });
         // ymlStub.safeLoad = function (file) { return 'Stubbed value from json file'};
         // let data = stub.loadYmlFile('test/test-data/test.json');
