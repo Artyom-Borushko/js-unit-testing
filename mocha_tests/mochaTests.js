@@ -1,10 +1,12 @@
 'use strict'
+const proxyquire =  require('proxyquire');
 const path = require('path');
 const chai =  require('chai');
 const expect = chai.expect;
 const chaiAsPromised = require('chai-as-promised');
 const readData = require(path.resolve('lib/readData'));
 chai.use(chaiAsPromised);
+const test = require('../lib/fileDataManager');
 
 describe('Array', function() {
     describe('#indexOf()', function() {
@@ -31,6 +33,15 @@ describe('ReadData', function() {
     });
 
     it('should read data from json file', () => {
+
+        // stubbed test
+        // const ymlStub = {};
+        // let stub = proxyquire('../lib/fileDataManager', { 'js-yaml': ymlStub });
+        // ymlStub.safeLoad = function (file) { return 'Stubbed value from file'};
+        // let data = stub.loadYmlFile('test/test-data/test.json');
+        // expect(data).to.be.equal('Stubbed value from file');
+        
+        // // original test
         let data = readData('test/test-data/test.json');
         expect(data.data).to.be.equal('data from json file');
     });
